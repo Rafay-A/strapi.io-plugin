@@ -45,7 +45,7 @@ class HomePage extends Component {
     const importConfig = {
       ...analysisConfig,
       contentType: selectedContentType,
-      fieldMapping
+      fieldMapping    
     };
     try {
       await request("/import-content", { method: "POST", body: importConfig });
@@ -138,6 +138,8 @@ class HomePage extends Component {
   render() {
     return (
       <div className={"container-fluid"} style={{ padding: "18px 30px" }}>
+        
+        
         <PluginHeader
           title={"Import Content"}
           description={"Import CSV and RSS-Feed into your Content Types"}
@@ -208,6 +210,7 @@ class HomePage extends Component {
           </Block>
         </div>
         {this.state.analysis && (
+          
           <Row className="row">
             <MappingTable
               analysis={this.state.analysis}

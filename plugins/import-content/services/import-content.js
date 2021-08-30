@@ -12,12 +12,12 @@ const import_queue = {};
 const importNextItem = async importConfig => {
   const sourceItem = import_queue[importConfig.id].shift();
   if (!sourceItem) {
-    console.log("import complete");
     await strapi
       .query("importconfig", "import-content")
       .update({ id: importConfig.id }, { ongoing: false });
     return;
   }
+  
   try {
     const importedItem = await importFields(
       sourceItem,
@@ -55,7 +55,6 @@ const removeImportedFiles = async (fileIds, uploadConfig) => {
 const undoNextItem = async (importConfig, uploadConfig) => {
   const item = undo_queue[importConfig.id].shift();
   if (!item) {
-    console.log("undo complete");
     await strapi
       .query("importconfig", "import-content")
       .update({ id: importConfig.id }, { ongoing: false });
@@ -98,6 +97,7 @@ module.exports = {
         status: "undo started",
         importConfigId: importConfig.id
       });
+
       const uploadConfig = await strapi
         .store({
           environment: strapi.config.environment,
@@ -121,7 +121,6 @@ module.exports = {
   importItems: (importConfig, ctx) =>
     new Promise(async (resolve, reject) => {
       const { dataType, body } = await resolveDataFromRequest(ctx);
-      console.log("importitems", importConfig);
       try {
         const { items } = await getItemsFromData({
           dataType,

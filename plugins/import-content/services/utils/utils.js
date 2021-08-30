@@ -25,8 +25,8 @@ const getDataFromUrl = url => {
     });
   });
 };
+
 const resolveDataFromRequest = async ctx => {
-  console.log(ctx.request.body);
   const { source, type, options, data } = ctx.request.body;
   switch (source) {
     case "upload":
@@ -56,6 +56,7 @@ const getItemsFromData = ({ dataType, body, options }) =>
         ...options,
         columns: true
       });
+
       return resolve({ sourceType: "csv", items });
     }
     reject({

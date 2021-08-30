@@ -66,7 +66,6 @@ const importMediaFiles = async (savedContent, sourceItem, importConfig) => {
         );
         const storePromises = relatedContents.map(storeFiles);
         const storedFiles = await Promise.all(storePromises);
-        console.log(_.flatten(storedFiles));
         return storedFiles;
       }
     }

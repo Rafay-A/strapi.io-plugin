@@ -106,6 +106,7 @@ class UploadFileForm extends Component {
                   transform="translate(0.94874 87.10632) rotate(-75)"
                   fill="#fafafb"
                 />
+                
                 <rect
                   x="27.06627"
                   y="4.98824"

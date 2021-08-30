@@ -23,7 +23,6 @@ module.exports = {
     const importConfig = await strapi
       .query('importconfig', 'import-content')
       .findOne({id: importId});
-    console.log('undo', importId);
     await services['undoitems'].undoItems(
       importConfig
     )
@@ -48,8 +47,7 @@ module.exports = {
     const importConfig = await strapi
       .query("importconfig", "import-content")
       .findOne({ id: importId });
-    console.log("undo", importId);
-    await services["importcontent"].undoItems(importConfig);
+    await services["import-content"].undoItems(importConfig);
     ctx.send(importConfig);
 },
 
@@ -60,8 +58,7 @@ module.exports = {
     const record = await strapi
       .query("importconfig", "import-content")
       .create(importConfig);
-    console.log("create", record);
-    await services["importcontent"].importItems(record, ctx);
+    await services["import-content"].importItems(record, ctx);
     ctx.send(record);
 },
 
@@ -69,7 +66,7 @@ module.exports = {
     const services = strapi.plugins["import-content"].services;
     try {
       const data = await services["import-content"].preAnalyzeImportFile(ctx);
-      console.log(data);
+
       ctx.send(data);
     } catch (error) {
       console.log(error);
@@ -77,4 +74,5 @@ module.exports = {
       ctx.response.message = "could not parse: " + error;
     }
   }
+
 };
