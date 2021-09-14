@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "images",
+  "info": {
+    "name": "image",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image_id": {
+      "type": "integer"
+    },
+    "alt": {
+      "type": "string"
+    },
+    "product": {
+      "via": "images",
+      "model": "products"
+    },
+    "src": {
+      "type": "string"
+    },
+    "variant_id": {
+      "via": "image_ids",
+      "model": "variants"
+    }
+  }
+}

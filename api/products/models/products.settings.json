@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "sale": {
+      "type": "boolean"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "new": {
+      "type": "boolean"
+    },
+    "variants": {
+      "via": "product",
+      "collection": "variants"
+    },
+    "images": {
+      "via": "product",
+      "collection": "images"
+    },
+    "tags": {
+      "via": "products",
+      "collection": "tags",
+      "dominant": true
+    }
+  }
+}

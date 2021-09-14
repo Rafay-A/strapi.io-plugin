@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "variants",
+  "info": {
+    "name": "variant",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sku": {
+      "type": "string"
+    },
+    "variant_id": {
+      "type": "integer"
+    },
+    "color": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "product": {
+      "via": "variants",
+      "model": "products"
+    },
+    "image_ids": {
+      "via": "variant_id",
+      "collection": "images"
+    }
+  }
+}
